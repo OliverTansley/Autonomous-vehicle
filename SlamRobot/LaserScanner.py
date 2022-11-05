@@ -1,10 +1,17 @@
 #! /usr/bin/env python
 
+import random
+
 import rospy
+import LineDetection.LineDetection as LD
 from sensor_msgs.msg import LaserScan
 
+
 def callback(msg):
-    print(len(msg.ranges))
+    
+    LD.LineDetector.make_seed_segments(msg.ranges)
+    
+
 
 def scanENV():
     rospy.init_node("scan_printer")
@@ -13,4 +20,5 @@ def scanENV():
     rospy.spin()
 
 if __name__ == "__main__":
+    
     scanENV()
