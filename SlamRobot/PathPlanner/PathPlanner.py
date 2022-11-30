@@ -10,7 +10,8 @@ class PathPlanner:
 
     N = 40
     found = False
-    k = 4
+    k = 200
+    max_score = 200
 
     @staticmethod
     def start(start,end)->Tree:
@@ -18,20 +19,21 @@ class PathPlanner:
         Basic tree building algorithm
         '''
         T = Tree(start[0],start[1])
-        for _ in range(40):
-
+        while not(PathPlanner.found):
+        
             # Select best node to extend
 
             randomPos:tuple[int,int] = (int(4*320*random.random()),int(4*240*random.random()))
             nearestNode:Node = T.getClosestNode(randomPos)
             nearestNodescore = (math.sqrt((nearestNode.x - end[0])**2 + (nearestNode.y - end[1])**2) - math.sqrt((start[0] - end[0])**2 + (start[1] - end[1])**2))
-            rand_bound = random.random()
+            rand_bound = random.random()*PathPlanner.max_score
 
             while nearestNodescore < rand_bound:
                 randomPos:tuple[int,int] = (int(4*320*random.random()),int(4*240*random.random()))
                 nearestNode:Node = T.getClosestNode(randomPos)
-                nearestNodescore = 1 -((100*math.exp(-point_2_point_distance(randomPos,end)/PathPlanner.k))/100)
-                rand_bound = random.random()
+                nearestNodescore = ((PathPlanner.max_score*math.exp(-point_2_point_distance(randomPos,end)/PathPlanner.k)))
+                print(str(point_2_point_distance(randomPos,end)/PathPlanner.k),":",nearestNodescore)
+                rand_bound = random.random()*PathPlanner.max_score
             
             # Extend tree with new node
 
