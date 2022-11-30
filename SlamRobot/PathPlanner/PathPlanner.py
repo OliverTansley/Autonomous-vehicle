@@ -16,12 +16,12 @@ class PathPlanner:
     @staticmethod
     def start(start,end)->Tree:
         '''
-        Basic tree building algorithm
+        RRT with euclidean distance heuristic
         '''
         T = Tree(start[0],start[1])
         while not(PathPlanner.found):
         
-            # Select best node to extend
+            # Select best node to extend (do while loop)
 
             randomPos:tuple[int,int] = (int(4*320*random.random()),int(4*240*random.random()))
             nearestNode:Node = T.getClosestNode(randomPos)
@@ -38,6 +38,6 @@ class PathPlanner:
             # Extend tree with new node
 
             T.addNode(nearestNode,Node(randomPos[0],randomPos[1]))
-            if point_2_point_distance(randomPos,(end[0],end[1])) < 50:
+            if point_2_point_distance(randomPos,(end[0],end[1])) < 25:
                 PathPlanner.found = True
         return T
