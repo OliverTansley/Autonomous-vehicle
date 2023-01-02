@@ -1,6 +1,6 @@
 import math
     
-def point_2_point_distance(point1,point2) -> float:
+def point_2_point_distance(point1: tuple[int,int],point2:tuple[int,int]) -> float:
     '''
     Get euclidean distance between to points represented as tuples (x1,y1) (x2,y2)
     '''

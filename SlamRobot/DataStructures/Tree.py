@@ -5,9 +5,9 @@ import pygame
 
 class Node:
 
-    def __init__(self, xpos, ypos) -> None:
-        self.x = xpos
-        self.y = ypos
+    def __init__(self, xpos:int, ypos: int) -> None:
+        self.x:int = xpos
+        self.y:int = ypos
         self.neighbors:list[Node] = []
         self.marked: bool = False
     
