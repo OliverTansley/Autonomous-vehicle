@@ -1,9 +1,7 @@
-#! /usr/bin/env python
-
-
 import rclpy
 from rclpy.node import Node
 import LineDetection.LineDetection as LD
+
 from sensor_msgs.msg import LaserScan
 
 class LaserScanner(Node):
