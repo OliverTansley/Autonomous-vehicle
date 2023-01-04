@@ -1,7 +1,5 @@
 #! /usr/bin/env python
 
-import random
-
 
 import rclpy
 from rclpy.node import Node
@@ -23,7 +21,6 @@ class LaserScanner(Node):
 
     def run(self):
         rclpy.create_node("scan_printer")
-        
         rclpy.spin(self)
 
 

@@ -3,8 +3,6 @@
 ## ros commands
 
 Launch gazebo simulation:
-- roslaunch turtlebot3_gazebo turtlebot3_world.launch
+- ros2 launch turtlebot3_gazebo empty_world.launch.py
 
-Launch RVis for laser data visualisation:
-- roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
 
